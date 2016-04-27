@@ -22,7 +22,7 @@ npm install --only=dev
 head "Running Build script."
 npm run build
 
-line "Cleanning Development Dependencies."
+head "Cleanning Development Dependencies."
 npm prune --production
 
 head "Build End."
