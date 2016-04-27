@@ -3,7 +3,7 @@
 echo "-----> Detecting npm build script"
 if [ -f $1/package.json ]; then
   echo "       Package.json detected."
-  if grep -q \"build\" package.json; then
+  if grep -q \"build\" $1/package.json; then
    echo "       Build script detected."
    exit 0
   else
