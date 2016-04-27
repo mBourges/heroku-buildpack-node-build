@@ -1,0 +1,28 @@
+#!/bin/bash
+
+bp_dir=$(cd $(dirname $0); cd ..; pwd)
+
+source $bp_dir/lib/head.sh
+source $bp_dir/lib/line.sh
+source $bp_dir/lib/export_env_dir.sh
+
+build_dir=$1
+cache_dir=$2
+env_dir=$3
+
+head "Starting build process."
+line "Exporting Environment Variables."
+
+export_env_dir $env_dir
+cd $build_dir
+
+line "Installing Development Dependencies."
+npm install --only=dev
+
+head "Running Build script."
+npm run build
+
+line "Cleanning Development Dependencies."
+npm prune --production
+
+head "Build End."

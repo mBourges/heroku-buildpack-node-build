@@ -1,15 +1,17 @@
 #!/bin/bash
 
+echo "-----> Detecting npm build script"
 if [ -f $1/package.json ]; then
-  echo "-----> Package.json detected."
+  echo "       Package.json detected."
   if grep -q \"build\" package.json; then
-   echo "-----> Build script detected."
+   echo "       Build script detected."
    exit 0
   else
-   echo "-----> Build script missing."
+   echo "       Build script missing."
    exit 1
   fi
 else
-  echo "-----> Package.json missing."
+  echo "       Package.json missing."
+  echo "       Add Package.json file."
   exit 1
 fi
